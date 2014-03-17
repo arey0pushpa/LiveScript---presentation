@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>LiveScript talk at Functional Programmers Paris Meetup, November 26th 2013</title>
+		<title>LiveScript talk</title>
 
 		<meta name="description" content="LiveScript talk at Functional Programmers Paris Meetup, November 26th 2013">
-		<meta name="author" content="Khalid Jebbari">
+		<meta name="author" content="NEWTON" >
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -37,15 +37,21 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>LiveScript presentation</h1>
-					<h3>by Khalid Jebbari</h3>
-					<h3>November 26th 2013</h3>
+					<h1>LiveScript presentation</h1> <br />
+					<h3>by Ankit Shukla</h3>
+					<!--
 					<h3><a href="http://twitter.com/Dj3bbZ">@Dj3bbZ</a></h3>
-
-					<aside class="notes">
-						But : présenter LiveScript à des adeptes du fonctionnel pour avoir leur avis. Pas encore utilisé en prod, mais utilisé CoffeeScript
-					</aside>
+-->
+					
 				</section>
+
+<section data-markdown>
+    <script type="text/template">
+        ## Page title
+
+        A paragraph with some text and a [link](http://hakim.se).
+    </script>
+</section>
 
 				<section>
 					<h2>Javascript anyone ?</h2>
@@ -173,17 +179,19 @@ var f = function(a, b) {
 				</section>
 
 				<section>
-					<h2>Show me some code, dude !</h2>
-					<img src="meme.png" alt="'Hello World', I'm a fucking genius" width="500" height="500">
+					<h2>Show me code, dude !</h2>
+					<img src="meme.jpg" alt="'Hello World', I'm a fucking genius" width="500" height="500">
 				</section>
 
 				<section>
 					<h3>Easy currying of user-defined functions</h3>
 					<pre><code data-trim contenteditable>
 # No currying
+
 f = (a, b) -> a + b
 
 # Easy currying, with double arrow -->
+
 f = (a, b) --> a + b
 g = f 1 # curried f
 g 2 # → 3
