@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+		<head>
+				<meta charset="utf-8"/>
+
+				<title>What Every Gangster Should Know About Functional Programming</title>
+
+				<meta name="description" content="What Every Hipster Should Know About Functional Programming"/>
+				<meta name="author" content="NEWTON" />
+
+				<meta name="apple-mobile-web-app-capable" content="yes" />
+				<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+				<link rel="stylesheet" href="css/reveal.min.css"/>
+				<link rel="stylesheet" href="css/theme/hipster.css" id="theme"/>
+
+				<!-- For syntax highlighting -->
+				<link rel="stylesheet" href="lib/css/tomorrow-night-eighties.css"/>
+
+				<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+				<script>
+						document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+				</script>
+
+		</head>
+
+		<body>
+
+				<div class="reveal">
+
+						<!-- Any section element inside of this container is displayed as a slide -->
+						<div class="slides">
+
+
+								<section>
+										<img src="m/twilight-sparkle.jpg"/>
+										<div class="pic-label quote">
+												I use Haskell.
+												<br/>You probably wouldn't understand it.
+										</div>
+								</section>
+         
+								<section>
+									<h4>GOGO GANG</h4>
+										<img src="m/gogo.jpg"/>
+										<div class="pic-label quote">
+            
+												<br/> Teri Kah ke lunga !
+										</div>
+								</section>
+
+								<section class="title-slide">
+										<p>Every Gangster should know about ?</p>
+										<img src="m/the-four-hipsters.jpg"/>
+										<h3>Functional Programming</h3>
+										
+										<h6 class="small centre">via haskell</h6>
+								</section>
+						
+						
+
+
+						// Full list of configuration options available here:
+						// https://github.com/hakimel/reveal.js#configuration
+						Reveal.initialize({
+								controls: false,
+								progress: false,
+								history: true,
+								center: true,
+								mouseWheel: true,
+								rollingLinks: false,
+
+								theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+								transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/none
+
+								// Optional libraries used to extend on reveal.js
+								dependencies: [
+										{ src: 'lib/js/underscore.js', async: true, condition: function() { return true; } },
+										{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+										{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+										{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+										{ src: 'plugin/prettify/prettify.js', async: true, callback: function() {
+												var i, els = document.querySelectorAll("code"), l = els.length, el;
+												for (i = 0; i < l; i++) {
+														el = els[i];
+														if (el.className !== "no-highlight")
+																el.innerHTML = prettyPrintOne(el.innerHTML, el.className);
+												}
+										} },
+										{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+										{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+										{ src: 'plugin/catnip/catnip.js', async: true, condition: function() { return window.parent !== window; } },
+										{ src: 'plugin/repl/ace/ace.js', async: true },
+										{ src: 'plugin/repl/typescript.js', async: true },
+										{ src: 'plugin/repl/repl.js', async: true }
+										// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+								]
+						});
+
+				</script>
+
+		</body>
+</html>
