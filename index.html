@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>LiveScript talk at Functional Programmers Paris Meetup, November 26th 2013</title>
+
+		<meta name="description" content="LiveScript talk at Functional Programmers Paris Meetup, November 26th 2013">
+		<meta name="author" content="Khalid Jebbari">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>LiveScript presentation</h1>
+					<h3>by Khalid Jebbari</h3>
+					<h3>November 26th 2013</h3>
+					<h3><a href="http://twitter.com/Dj3bbZ">@Dj3bbZ</a></h3>
+
+					<aside class="notes">
+						But : présenter LiveScript à des adeptes du fonctionnel pour avoir leur avis. Pas encore utilisé en prod, mais utilisé CoffeeScript
+					</aside>
+				</section>
+
+				<section>
+					<h2>Javascript anyone ?</h2>
+					<p>Who knows/doesn't know it ?</p>
+					<p><small>Used it in prod, I mean</small></p>
+					<p>What do you think about it ?</p>
+				</section>
+
+				<section>
+					<h2>A trip down memory lane...</h2>
+					<ul>
+						<li><a href="http://www.oreillynet.com/pub/a/javascript/2001/04/06/js_history.html">Created by Brendan Eich for Netscape in May 1995</a></li>
+						<li><a href="http://www.computer.org/csdl/mags/co/2012/02/mco2012020007.html">In <em>10 days !</em></a></li>
+						<li>Had to look like Java</li>
+						<li>Be dynamic</li>
+						<li>Have objects without classes</li>
+						<li>=> Inspired by Scheme for the functional side</li>
+						<li>=> Inpsired by Self for the object side (prototype-based objects)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Problems with Javascript</h2>
+					<ul>
+						<li><a href="http://wtfjs.com/">Lots</a> <a href="http://thedailywtf.com/Comments/Thank-you,-Javascript.aspx">of</a> <a href="http://coding.smashingmagazine.com/2011/05/30/10-oddities-and-secrets-about-javascript/">WTF</a></li>
+						<li><code>this</code> is complex and causes many bugs</li>
+						<li>Missing API's : collections, function manipulations, objects/prototypes</li>
+					</ul>
+					<blockquote><a href="http://www.crockford.com/javascript/javascript.html">The World's Most Misunderstood Programming Language</a></blockquote><em>Douglas Crockford</em>
+
+					<aside class="notes">Lisp in C clothing ; community recently understood its functional power</aside>
+				</section>
+
+				<section>
+					<h2>The functional side of Javascript</h2>
+					<ul>
+						<li>Functions as first-class citizens</li>
+						<li><code>map</code>, <code>reduce</code> and <code>filter</code> only recently arrived in the language</li>
+						<li>But not available in all browsers <a href="http://kangax.github.io/es5-compat-table/#ie9">(IE <= 8)</a></li>
+						<li>Where's the rest ?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2><a href="http://underscorejs.org/">Underscore.js</a> ?</h2>
+					<ul>
+						<li><q cite="">"is a utility-belt library for JavaScript that provides a lot of the functional programming support [...] "</q></li>
+						<li>Cross-browser<sup>*</sup></li>
+						<li>The "Most Depended Upon" lib on <a href="https://npmjs.org/">npm</a></li>
+					</ul>
+					<pre><code data-trim contenteditable>
+_.map, _.reduce, _.pluck, _.debounce, _.memoize
+// lot of goodies inside
+					</code></pre>
+					<small style="margin-top:50px;"><sup>*</sup> : Almost, its fork <a href="http://lodash.com/">Lo-Dash</a> is better.</small>
+				</section>
+
+				<section>
+					<h2>Underscore, but...</h2>
+					<ul>
+						<li>Not that functional : currying ? order of arguments ? composition ? extensibility ?
+						Check this <a href="http://www.youtube.com/watch?v=m3svKOdZijA">talk</a> (and the <a href="http://www.slideshare.net/drboolean/underscore-18211797">slides</a>)</li>
+					</ul>
+					<pre><code>
+_.curry() // doesn't exist, even though _.partial exists
+_.map(collection, fun) // why not the opposite order ?
+_.compose(*functions) // not that useful because of previous points
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>CoffeeScript, maybe ?</h2>
+					<ul>
+						<li>Very popular language that compiles to Javascript</li>
+						<li>Same semantics with syntactic sugar</li>
+						<li><a href="http://www.infoq.com/news/2013/03/Language-Expressiveness">One of the most expressive general-purpose language</a>, along with Haskell and Clojure</li>
+					</ul>
+					<pre><code data-trim contenteditable>
+# CoffeeScript
+f = (a, b) ->
+	a + b
+</code></pre>
+<pre><code>
+// Resulting Javascript
+var f = function(a, b) {
+	return a + b;
+};
+					</code></pre>
+					<p>Tries to push a more functional style, but doesn't go far enough...</p>
+
+					<aside class="notes" data-markdown>
+						Some CoffeeScript's features :
+						- all functions return their last statement
+						- almost everything is an expression
+						- for comprehensions
+						- default arguments
+						- object desctructuring
+						- sugar for classes (bof...)
+					</aside>
+				</section>
+
+				<section>
+					<h2>Enter LiveScript</h2>
+					<ul>
+						<li>Child of CoffeeScript</li>
+						<li>Shares most of its syntax</li>
+						<li>Same semantics than Javascript as well</li>
+						<li>Inspired mainly by Haskell (yes!) and F# (yes!), with a bit of LISP (yes!)</li>
+						<li>Full of functional idioms</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Features highlight</h2>
+					<h4>Personal selection. LiveScript has *A LOT*</h4>
+					<ul>
+						<li>Easy currying</li>
+						<li>Partial application</li>
+						<li>Function composition</li>
+						<li>Pipes ! Unix/F#-like</li>
+						<li>Pattern matching</li>
+						<li>Backcalls</li>
+						<li>Prelude.ls : an underscore-like shipped with LiveScript, very rich</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Show me some code, dude !</h2>
+					<img src="meme.png" alt="'Hello World', I'm a fucking genius" width="500" height="500">
+				</section>
+
+				<section>
+					<h3>Easy currying of user-defined functions</h3>
+					<pre><code data-trim contenteditable>
+# No currying
+f = (a, b) -> a + b
+
+# Easy currying, with double arrow -->
+f = (a, b) --> a + b
+g = f 1 # curried f
+g 2 # → 3
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Partial application</h3>
+					<h4>A.k.a how to solve one of Underscore's problems</h4>
+					<pre><code>
+# using _ as a placeholder argument for data
+# Operators as functions (yes!)
+biggerThanThree = _.map _, (> 3)
+
+# [1 2 3 4 5] will be used in place of _
+biggerThanThree [1 2 3 4 5] // → [true,true,false,false,false]
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Function composition</h3>
+					<p><small>yes!</small></p>
+					<pre><code>
+# Forward composition
+add-two-times-two = (+ 2) >> (* 2)
+add-two-times-two 3 # → (3+2)*2 → 10
+
+# Backward composition
+times-two-add-two = (+ 2) << (* 2)
+times-two-add-two 3 # → (3*2)+2 → 8
+
+# Haskell style, equivalent to <<
+times-two-add-two = (+ 2) . (* 2)
+					</code></pre>
+
+					<aside class="notes">
+						Le highlighter ne fonctionne pas encore avec LiveScript, un patch est en cours
+					</aside>
+				</section>
+
+				<section>
+					<h3>Pipes !</h3>
+					<h4>Unix/F# style. Avoids nesting calls</h4>
+
+					<pre><code>
+# (.length) is a shortcut to access property
+[1 2 3] |> filter (> 2) |> (.length) # → 1
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Pattern matching</h3>
+
+					<pre><code>
+# empty function from Prelude.ls (coming after)
+# Guard syntax (|) translates to switch in JS
+sum = ([x, ...xs]:list) ->
+	| empty list => 0
+	| empty xs   => x
+	| otherwise  => x + sum xs
+					</code></pre>
+
+					<aside class="notes">
+						Est-ce vraiment du pattern matching ?
+					</aside>
+				</section>
+
+				<section>
+					<h3>Backcalls</h3>
+					<h4>A way to avoid pyramid of callbacks in async programming</h4>
+
+					<pre><code>
+x <- map _, [1 to 3]
+x * 2
+# → [2,4,6]
+# translates to
+map(function(x){
+  return x * 2;
+}, [1, 2, 3]);
+
+# the ! suppresses the return of the function
+data <-! $.get 'my-ajax-url.com'
+$ '.result' .html data
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Prelude.ls</h3>
+					<h4>The missing Javascript API's, shipped with LiveScript</h4>
+					<h5>What you would expect from a functional language</h5>
+					<pre><code>
+# 60+ functions for arrays
+head, first, tail, last, compact, partition, concat, intersection, scan, take-while, zip, ...
+
+# ~15 functions for objects (maps)
+keys, values, pairs-to-obj, reject, find, ...
+
+# ~20 functions for strings
+split, join, words, unwords, reverse, repeat, ...
+
+# 30+ functions for Math (yes!)
+min, max, tau, odd, even, quot, rem, sin, signum, is-it-NaN
+
+# of course, functions functions
+apply, curry, flip, fix
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Prelude.ls (part 2)</h3>
+					<ul>
+						<li>Easy to install : <code>npm install -g livescript</code></li>
+						<li>Has a CLI and a REPL : <code>lsc</code> or <code>livescript</code></li>
+						<li>Has a watcher, that compiles .ls to .js on change : <code>lsc --watch</code></li>
+						<li>Produces readable Javascript</li>
+					</ul>
+				</section>
+				<section>
+					<h2>That's all folks !</h2>
+					<h3>Questions ?</h3>
+
+					<aside class="notes">
+						J'ai une question pour les Haskellers,F-shapriens,Scalariés : 1) Le manque de typage statique vous gène-t-il ? 2) Que pensez-vous de LiveScript wrt/Javascript ? 3) Fay ?
+					</aside>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
