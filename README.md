@@ -4,10 +4,7 @@ Head to http://djebbz.github.io/presentation-livescript to see the presentatio
 Slides: LiveScript reason to live  
 ===================================================================
 
-Keybindings:
-
-* `Ctrl-S` evaluates all expressions in the edit buffer.
-* `Alt-PgUp` and `Alt-PgDn` navigates through slides when the editor is active. Otherwise, cursor keys will work, though embarrassingly mainstream.
+Head to http://slidedeck.io/arey0pushpa/LiveScript---presentation to see the presentation
 
 Inspirations and thanks 
 ====================================================================
