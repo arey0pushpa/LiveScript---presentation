@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -190,17 +190,20 @@ var f = function(a, b) {
 
 				<section>
 					<h3>Easy currying of user-defined functions</h3>
-					<pre><code data-trim contenteditable>
+					<pre><code>
 # No currying
 
-f = (a, b) -> a + b
+    f = (a, b) -> a + b
 
 # Easy currying, with double arrow -->
 
-f = (a, b) --> a + b
-g = f 1 # curried f
-g 2 # → 3
-					</code></pre>
+    f = (a, b) --> a + b
+
+    g = f 1 # curried f
+
+    g 2 # → 3
+
+		</code></pre>
 				</section>
 
 				<section>
@@ -209,10 +212,12 @@ g 2 # → 3
 					<pre><code>
 # using _ as a placeholder argument for data
 # Operators as functions (yes!)
-biggerThanThree = _.map _, (> 3)
+
+  biggerThanThree = _.map _, (> 3)
 
 # [1 2 3 4 5] will be used in place of _
-biggerThanThree [1 2 3 4 5] // → [true,true,false,false,false]
+
+  biggerThanThree [1 2 3 4 5] // → [true,true,false,false,false]
 					</code></pre>
 				</section>
 
@@ -221,15 +226,18 @@ biggerThanThree [1 2 3 4 5] // → [true,true,false,false,false]
 					<p><small>yes!</small></p>
 					<pre><code>
 # Forward composition
-add-two-times-two = (+ 2) >> (* 2)
-add-two-times-two 3 # → (3+2)*2 → 10
+
+  add-two-times-two = (+ 2) >> (* 2)
+  add-two-times-two 3 # → (3+2)*2 → 10
 
 # Backward composition
-times-two-add-two = (+ 2) << (* 2)
-times-two-add-two 3 # → (3*2)+2 → 8
+
+  times-two-add-two = (+ 2) << (* 2)
+  times-two-add-two 3 # → (3*2)+2 → 8
 
 # Haskell style, equivalent to <<
-times-two-add-two = (+ 2) . (* 2)
+  
+  times-two-add-two = (+ 2) . (* 2)
 					</code></pre>
 
 					<aside class="notes">
@@ -243,7 +251,8 @@ times-two-add-two = (+ 2) . (* 2)
 
 					<pre><code>
 # (.length) is a shortcut to access property
-[1 2 3] |> filter (> 2) |> (.length) # → 1
+
+  [1 2 3] |> filter (> 2) |> (.length) # → 1
 					</code></pre>
 				</section>
 
@@ -253,10 +262,11 @@ times-two-add-two = (+ 2) . (* 2)
 					<pre><code>
 # empty function from Prelude.ls (coming after)
 # Guard syntax (|) translates to switch in JS
-sum = ([x, ...xs]:list) ->
-	| empty list => 0
-	| empty xs   => x
-	| otherwise  => x + sum xs
+
+  sum = ([x, ...xs]:list) ->
+  	| empty list => 0
+  	| empty xs   => x
+  	| otherwise  => x + sum xs
 					</code></pre>
 
 					<aside class="notes">
@@ -269,27 +279,31 @@ sum = ([x, ...xs]:list) ->
 					<h4>A way to avoid pyramid of callbacks in async programming</h4>
 
 					<pre><code>
-x <- map _, [1 to 3]
-x * 2
-# → [2,4,6]
-# translates to
-map(function(x){
-  return x * 2;
-}, [1, 2, 3]);
+  x <- map _, [1 to 3]
+  x * 2
+  # → [2,4,6]
+  
+# Translates to
+
+  map(function(x){
+    return x * 2;
+  }, [1, 2, 3]);
 
 # the ! suppresses the return of the function
-data <-! $.get 'my-ajax-url.com'
-$ '.result' .html data
+
+  data <-! $.get 'my-ajax-url.com'
+  $ '.result' .html data
 					</code></pre>
 				</section>
 
 				<section>
 					<h3>Prelude.ls</h3>
 					<h4>The missing Javascript API's, shipped with LiveScript</h4>
-					<h5>What you would expect from a functional language</h5>
+					What you would expect from a functional language
 					<pre><code>
 # 60+ functions for arrays
-head, first, tail, last, compact, partition, concat, intersection, scan, take-while, zip, ...
+head, first, tail, last, compact, partition, concat, <br />
+<br />intersection, scan, take-while, zip, ...
 
 # ~15 functions for objects (maps)
 keys, values, pairs-to-obj, reject, find, ...
@@ -306,21 +320,35 @@ apply, curry, flip, fix
 				</section>
 
 				<section>
-					<h3>Prelude.ls (part 2)</h3>
-					<ul>
+					<h3>Prelude.ls </h3>
+	<ul>
 						<li>Easy to install : <code>npm install -g livescript</code></li>
+						
 						<li>Has a CLI and a REPL : <code>lsc</code> or <code>livescript</code></li>
-						<li>Has a watcher, that compiles .ls to .js on change : <code>lsc --watch</code></li>
-						<li>Produces readable Javascript</li>
-					</ul>
-				</section>
+	</ul><br />					
+					
+ <br />It is powerful and flexible
+    
+					 <pre><code>
+      [1 to 5] |> map (^2) |> filter even |> fold (+), 0
+      #=> 20					
+					</code></pre>
+			Almost all of its functions are curried.
+			<pre><code>
+    fold (+), 0, [1 2 3] #=> 6
+    
+    sum = fold (+), 0
+    sum [1 2 3] #=> 6
+    sum [4 5 6] #=> 15			
+
+</code></pre>			
+	</section>
+				
 				<section>
 					<h2>That's all folks !</h2>
 					<h3>Questions ?</h3>
-
-					<aside class="notes">
-						J'ai une question pour les Haskellers,F-shapriens,Scalariés : 1) Le manque de typage statique vous gène-t-il ? 2) Que pensez-vous de LiveScript wrt/Javascript ? 3) Fay ?
-					</aside>
+      <img src="j.png" alt="'Hello World', I'm a fucking genius" width="700" height="480">
+				
 				</section>
 
 			</div>
@@ -332,8 +360,7 @@ apply, curry, flip, fix
 
 		<script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
+		
 			Reveal.initialize({
 				controls: true,
 				progress: true,
