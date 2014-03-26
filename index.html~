@@ -132,8 +132,7 @@ _.compose(*functions) // not that useful because of previous points
 f = (a, b) ->
 	a + b
 </code></pre>
-<pre><code>
-// Resulting Javascript
+<pre><code>// Resulting Javascript
 var f = function(a, b) {
 	return a + b;
 };
@@ -296,14 +295,54 @@ var f = function(a, b) {
 					</code></pre>
 				</section>
 
+<section>
+<h3>Real Design Choices</h3>
+JS '==' in LiveScript is '~=', and '===' enables
+object and array comparisons, and also stricter comparison
+<pre><code>
+  2 == "2"              # => false
+  2 ~= "2"              # => true
+
+  [1,2,3] == [1,2,3]    # => false
+  [1,2,3] === [1,2,3]   # => true
+  
+</code></pre>
+Functions which take no arguments are called<br /> 
+with a bang!
+
+<pre><code>two = -> 2
+  two!
+</code></pre>
+
+</section>
+
+<section>
+<h3>Design Choice</h3>
+A function may be curried by using a long arrow rather than a short one ;
+<pre><code>
+add = (left, right) --> left + right
+add1 = add 1
+add1 2          # => 3
+</code></pre>
+You could use it to clone a particular argument to avoid side-effects :
+<pre><code>
+copy = (^^target, source) ->
+  for k,v of source => target[k] = v
+  target
+a = { a: 1 }
+copy a, { b: 2 }        # => { a: 1, b: 2 }
+a                       # => { a: 1 }
+</code></pre>
+</section>
+
+
 				<section>
 					<h3>Prelude.ls</h3>
 					<h4>The missing Javascript API's, shipped with LiveScript</h4>
 					What you would expect from a functional language
-					<pre><code>
-# 60+ functions for arrays
+					<pre><code># 60+ functions for arrays
 head, first, tail, last, compact, partition, concat, <br />
-<br />intersection, scan, take-while, zip, ...
+intersection, scan, take-while, zip, ...
 
 # ~15 functions for objects (maps)
 keys, values, pairs-to-obj, reject, find, ...
