@@ -422,22 +422,38 @@ end
    </code></pre>  
 
    </section>
+   
+   <section>
+   <h3><a href="http://www.haskell.org/haskellwiki/MapReduce_as_a_monad"> Map</a></h3>
+   map from Underscore:   
+   <pre><code>
+    var array1 = [1, 2, 3, 4, 5]; 
+    var array2 = _.map(array1, function(x) { return x + array1.length; });    
+   </code></pre>
+   map from Lazy.js
+   <pre><code>
+   var array = [1, 2, 3, 4, 5]; 
+   var sequence = Lazy(array).map(function(x) { return x + array.length;});
+   </code></pre>
+   </section>
+
    <section> 
-    <h3>Indefinite sequences</h3>
+    <h3>Asynchronous iteration</h3>
     <pre><code>
-   var uniqueRandsFrom1To1000 = Lazy.generate(function()
-    { return Math.random(); })
-  .map(function(e) { return Math.floor(e * 1000) + 1; })
-  .uniq()
-  .take(300);
+   var asyncSequence = Lazy(array)
+  .async(100) // specifies a 100-millisecond interval between each element
+  .map(inc)
+  .filter(isEven)
+  .take(20);
     </code></pre>   
     
     <pre><code>
-// Output: see for yourself!
+// This function returns immediately and begins iterating 
+   over the sequence asynchronously.
 
-    uniqueRandsFrom1To1000.each(function(e) { 
-    console.log(e); 
-    });
+   asyncSequence.each(function(e) {
+      console.log(new Date().getMilliseconds() + ": " + e);
+     });
     </code></pre> 
     </section>
 	
