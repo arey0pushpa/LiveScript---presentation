@@ -7,7 +7,7 @@
 		<title>LiveScript talk</title>
 
 		<meta name="description" content="LiveScript talk at Functional Programmers Paris Meetup, November 26th 2013">
-		<meta name="author" content="NEWTON" >
+		<meta name="author" content="Ankit" >
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -310,7 +310,7 @@ object and array comparisons, and also stricter comparison
 Functions which take no arguments are called<br /> 
 with a bang!
 
-<pre><code>two = -> 2
+<pre><code>  two = -> 2
   two!
 </code></pre>
 
@@ -382,6 +382,84 @@ apply, curry, flip, fix
 
 </code></pre>			
 	</section>
+	
+	<section>
+<h3>  Redscript </h3>  
+    
+    # Block-like anonymous functions
+    <pre><code>
+  app.get '/users/:name', do |res, req|                        
+  puts req.params.name                                             
+  end                                                
+                 </code></pre>	
+                 # Make constructors quack like a duck
+   <pre><code>
+class Duck < Animal                                            
+  def init(name)                                               
+    super foo, bar                                              
+    @name = name                                                   
+  end,                                                         
+
+  def sayHi                                                      
+    puts 'Hello!'                                                
+  end                                                        
+end    
+   </code></pre>
+   </section>
+	<section>
+   <h3><a href="http://danieltao.com/lazy.js/"> Lazy.js</a></h3>
+   Lazy.js it a utility library for JavaScript,
+   similar to Underscore and Lo-Dash but with one important difference: " Lazy evaluation " .
+   <img src="l.png" alt="">
+	</section>
+	
+   <section>
+<h3><a href="http://danieltao.com/lazy.js/docs/"> A different paradigm</a></h3>
+     <i> Core of Lazy.js is function composition <br /></i>
+   Array transformation :
+   <pre><code>
+   f ( [x , y , ...] ) → f [ x', y', ...]
+   </code></pre>  
+
+   </section>
+   <section> 
+    <h3>Indefinite sequences</h3>
+    <pre><code>
+   var uniqueRandsFrom1To1000 = Lazy.generate(function()
+    { return Math.random(); })
+  .map(function(e) { return Math.floor(e * 1000) + 1; })
+  .uniq()
+  .take(300);
+    </code></pre>   
+    
+    <pre><code>
+// Output: see for yourself!
+
+    uniqueRandsFrom1To1000.each(function(e) { 
+    console.log(e); });
+    </code></pre> 
+    </section>
+	
+	<section>
+   <pre> <code>
+    var Lazy = require('lazy');
+
+    var lazy = new Lazy;
+    lazy
+      .filter(function (item) {
+        return item % 2 == 0
+      })
+      .take(5)
+      .map(function (item) {
+        return item*2;
+      })
+      .join(function (xs) {
+        console.log(xs);
+      });
+   </code>   
+   </pre>	
+	</section>
+	
 				
 				<section>
 					<h2>That's all folks !</h2>
