@@ -436,12 +436,14 @@ end
 // Output: see for yourself!
 
     uniqueRandsFrom1To1000.each(function(e) { 
-    console.log(e); });
+    console.log(e); 
+    });
     </code></pre> 
     </section>
 	
 	<section>
-   <pre> <code>
+	<h3>Examples</h3>
+   <pre><code>
     var Lazy = require('lazy');
 
     var lazy = new Lazy;
@@ -456,8 +458,13 @@ end
       .join(function (xs) {
         console.log(xs);
       });
-   </code>   
-   </pre>	
+   </code></pre>	
+   <p>Emit 'data' events with data in them at some point later,</p>
+   <pre><code>
+   [0,1,2,3,4,5,6,7,8,9,10].forEach(function (x) {
+      lazy.emit('data', x);
+    });   
+   </code></pre>
 	</section>
 	
 				
