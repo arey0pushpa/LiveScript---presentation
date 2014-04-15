@@ -1,5 +1,3 @@
-Head to http://djebbz.github.io/presentation-livescript to see the presentatio
-
 
 Slides: LiveScript reason to live  
 ===================================================================
