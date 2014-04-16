@@ -267,13 +267,40 @@ var f = function(a, b) {
   	| empty xs   => x
   	| otherwise  => x + sum xs
 					</code></pre>
+					
+					<h3>Comprehensions</h3>
+<pre><code>
+oneToTwenty = [1 to 20]
+evens       = [x for x in oneToTwenty when x % 2 == 0]
 
+</code></pre>
 					<aside class="notes">
 						Est-ce vraiment du pattern matching ?
 					</aside>
 				</section>
 
+
+<section>
+     <h3>Bound functions</h3>
+     Bound functions have this lexically bound, not dynamically bound as normally.
+   <pre><code>
+    obj = new
+     @x      = 10
+     @normal = -> @x
+     @bound  = ~> @x
+
+   obj2 = x: 5
+   obj2.normal = obj.normal
+   obj2.bound  = obj.bound
+ 
+   obj2.normal! #=> 5
+   obj2.bound!  #=> 10   
+   </code></pre>
+</section>
+
 				<section>
+				
+			
 					<h3>Backcalls</h3>
 					<h4>A way to avoid pyramid of callbacks in async programming</h4>
 
