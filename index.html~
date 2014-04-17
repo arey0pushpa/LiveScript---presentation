@@ -44,6 +44,11 @@
 -->
 					
 				</section>
+             
+             <section>
+           <h3>We Are ?</h3>   
+                        
+             </section>
 
 
 				<section>
@@ -267,40 +272,13 @@ var f = function(a, b) {
   	| empty xs   => x
   	| otherwise  => x + sum xs
 					</code></pre>
-					
-					<h3>Comprehensions</h3>
-<pre><code>
-oneToTwenty = [1 to 20]
-evens       = [x for x in oneToTwenty when x % 2 == 0]
 
-</code></pre>
 					<aside class="notes">
 						Est-ce vraiment du pattern matching ?
 					</aside>
 				</section>
 
-
-<section>
-     <h3>Bound functions</h3>
-     Bound functions have this lexically bound, not dynamically bound as normally.
-   <pre><code>
-    obj = new
-     @x      = 10
-     @normal = -> @x
-     @bound  = ~> @x
-
-   obj2 = x: 5
-   obj2.normal = obj.normal
-   obj2.bound  = obj.bound
- 
-   obj2.normal! #=> 5
-   obj2.bound!  #=> 10   
-   </code></pre>
-</section>
-
 				<section>
-				
-			
 					<h3>Backcalls</h3>
 					<h4>A way to avoid pyramid of callbacks in async programming</h4>
 
@@ -321,7 +299,7 @@ evens       = [x for x in oneToTwenty when x % 2 == 0]
   $ '.result' .html data
 					</code></pre>
 				</section>
-<!--
+
 <section>
 <h3>Real Design Choices</h3>
 JS '==' in LiveScript is '~=', and '===' enables
@@ -347,7 +325,7 @@ with a bang!
 <h3>Design Choice</h3>
 A function may be curried by using a long arrow rather than a short one ;
 <pre><code>
-add = (left, right) -> left + right
+add = (left, right) --> left + right
 add1 = add 1
 add1 2          # => 3
 </code></pre>
@@ -362,7 +340,7 @@ a                       # => { a: 1 }
 </code></pre>
 </section>
 
--->
+
 				<section>
 					<h3>Prelude.ls</h3>
 					<h4>The missing Javascript API's, shipped with LiveScript</h4>
@@ -454,13 +432,13 @@ end
    <h3><a href="http://www.haskell.org/haskellwiki/MapReduce_as_a_monad"> Map</a></h3>
    map from Underscore:   
    <pre><code>
-var array1 = [1, 2, 3, 4, 5]; 
-var array2 = _.map(array1, function(x) { return x + array1.length; });    
+    var array1 = [1, 2, 3, 4, 5]; 
+    var array2 = _.map(array1, function(x) { return x + array1.length; });    
    </code></pre>
    map from Lazy.js
    <pre><code>
- var array = [1, 2, 3, 4, 5]; 
- var sequence = Lazy(array).map(function(x) { return x + array.length;});
+   var array = [1, 2, 3, 4, 5]; 
+   var sequence = Lazy(array).map(function(x) { return x + array.length;});
    </code></pre>
    </section>
 
@@ -482,6 +460,10 @@ var array2 = _.map(array1, function(x) { return x + array1.length; });
       console.log(new Date().getMilliseconds() + ": " + e);
      });
     </code></pre> 
+    </section>
+    
+    <section>
+    <h3></h3>    
     </section>
 	
 	<section>
