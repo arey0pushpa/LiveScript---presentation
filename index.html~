@@ -38,18 +38,25 @@
 			<div class="slides">
 				<section>
 					<h1>LiveScript presentation</h1> <br />
-					<h3>by Ankit Shukla</h3>
+					<h3>by <a href="http://www.sportzinteractive.net/"> Ankit Shukla  &&  Aun Rizvi</a></h3>
 					<!--
 					<h3><a href="http://twitter.com/Dj3bbZ">@Dj3bbZ</a></h3>
 -->
 					
 				</section>
-             
+    <!--         
              <section>
-           <h3>We Are ?</h3>   
+           <h3>We Are ?</h3> 
+           <img src="s.jpg" alt="">  
                         
              </section>
+-->
 
+<section>
+ <h3>We work On JavaScript </h3>
+  
+    <img src="r.jpg" alt="">
+</section>
 
 				<section>
 					<h2>Javascript Again ?</h2>
@@ -496,7 +503,7 @@ end
 				<section>
 					<h2>That's all folks !</h2>
 					<h3>Questions ?</h3>
-      <img src="j.png" alt="'Hello World', I'm a fucking genius" width="700" height="480">
+      <img src="j.jpg" alt="'Hello World', I'm a fucking genius" width="700" height="480">
 				
 				</section>
 
