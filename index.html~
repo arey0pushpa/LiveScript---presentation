@@ -7,7 +7,7 @@
 		<title>LiveScript talk</title>
 
 		<meta name="description" content="LiveScript talk at Functional Programmers Paris Meetup, November 26th 2013">
-		<meta name="author" content="Ankit" >
+		<meta name="author" content="NEWTON" >
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -285,6 +285,25 @@ var f = function(a, b) {
 					</aside>
 				</section>
 
+<section>
+      <h3>Bound functions</h3>
+      Bound functions have this lexically bound, not dynamically bound as normally.
+    <pre><code>
+ -    obj = new
+ -     @x      = 10
+ -     @normal = -> @x
+ -     @bound  = ~> @x
+ -
+ -   obj2 = x: 5
+ -   obj2.normal = obj.normal
+ -   obj2.bound  = obj.bound
+ - 
+ -   obj2.normal! #=> 5
+ -   obj2.bound!  #=> 10   
+    </code></pre>
+ </section>
+
+
 				<section>
 					<h3>Backcalls</h3>
 					<h4>A way to avoid pyramid of callbacks in async programming</h4>
@@ -306,7 +325,7 @@ var f = function(a, b) {
   $ '.result' .html data
 					</code></pre>
 				</section>
-
+<!--
 <section>
 <h3>Real Design Choices</h3>
 JS '==' in LiveScript is '~=', and '===' enables
@@ -327,12 +346,13 @@ with a bang!
 </code></pre>
 
 </section>
-
+-->
+<!--
 <section>
 <h3>Design Choice</h3>
 A function may be curried by using a long arrow rather than a short one ;
 <pre><code>
-add = (left, right) --> left + right
+add = (left, right) -- left + right
 add1 = add 1
 add1 2          # => 3
 </code></pre>
@@ -346,7 +366,7 @@ copy a, { b: 2 }        # => { a: 1, b: 2 }
 a                       # => { a: 1 }
 </code></pre>
 </section>
-
+-->
 
 				<section>
 					<h3>Prelude.ls</h3>
@@ -378,13 +398,14 @@ apply, curry, flip, fix
 						<li>Has a CLI and a REPL : <code>lsc</code> or <code>livescript</code></li>
 	</ul><br />					
 					
- <br />It is powerful and flexible
-    
+ <br /><a href="http://preludels.com/"> It is powerful and flexible</a><br />
+<!--    
 					 <pre><code>
       [1 to 5] |> map (^2) |> filter even |> fold (+), 0
       #=> 20					
-					</code></pre>
+					</code></pre>-->
 			Almost all of its functions are curried.
+		
 			<pre><code>
     fold (+), 0, [1 2 3] #=> 6
     
