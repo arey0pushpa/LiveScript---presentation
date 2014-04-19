@@ -325,6 +325,26 @@ var f = function(a, b) {
   $ '.result' .html data
 					</code></pre>
 				</section>
+<section>
+<h3>Improved scoping</h3>
+= Always declares variable in current scope, use := for redeclaration of outer scope variables
+
+<pre><code>
+  x = 1
+  y = 1
+  do ->
+    x = 2
+    y := 2
+  x #=> 1
+  y #=> 2
+
+
+</code></pre>
+
+
+</section>
+
+
 <!--
 <section>
 <h3>Real Design Choices</h3>
@@ -391,7 +411,7 @@ apply, curry, flip, fix
 				</section>
 
 				<section>
-					<h3>Prelude.ls </h3>
+					<h3><a href ="http://preludels.com/"> Prelude.ls</a> </h3>
 	<ul>
 						<li>Easy to install : <code>npm install -g livescript</code></li>
 						
