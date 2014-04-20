@@ -459,6 +459,15 @@ class Duck < Animal
 end    
    </code></pre>
    </section>
+
+<section>
+<h3>Laziness is the mother of nine inventions out of ten.</h3>
+
+<img src="f.jpg" alt="">
+
+</section>   
+   
+   
 	<section>
    <h3><a href="http://danieltao.com/lazy.js/"> Lazy.js</a></h3>
    Lazy.js it a utility library for JavaScript,
@@ -510,6 +519,70 @@ end
     </code></pre> 
     </section>
 	
+<section>
+Array containing 1000 integers
+
+<pre><code>
+  var array = Lazy.range(1000).toArray();
+
+</code></pre>
+Do things and take first 5 results :
+<pre><code>
+  function square(x) { return x * x; }
+  function inc(x) { return x + 1; }
+  function isEven(x) { return x % 2 === 0; }
+  
+</code></pre>
+
+</section>	
+	
+	<section>
+   <h3>  Underscore way :	</h3>
+   <pre><code>
+var result = _.chain(array).map(square).map(inc).filter(isEven).take(5).value();
+   </code></pre>  
+<pre><code>
+map(square): Iterates over the array & creates
+             a new 1000-element array
+
+map(inc): Iterates over the new array,creating
+          another new 1000-element array
+
+filter(isEven): Iterates over that array,creating 
+                yet another new (500-element) array
+
+take(5): All that just for 5 elements!
+
+</code></pre>   
+	</section>
+
+ <section>
+ <h3>Escape route :</h3>
+  For Performance and/or efficiency , go the procedural route
+  <pre><code>
+var results = [];
+for (var i = 0; i < array.length; ++i) {
+  var value = (array[i] * array[i]) + 1;
+  if (value % 2 === 0) {
+    results.push(value);
+    if (results.length === 5) {
+      break;
+    }
+  }
+}  
+  </code></pre> 
+ 
+ </section> 
+ 
+<section>
+ <h3>Lazyjs time !</h3>
+ <pre><code>
+var result = Lazy(array).map(square).map(inc).filter(isEven).take(5); 
+
+ </code></pre>
+ No iteration takes place until you call each, and no intermediate arrays are created. 
+
+</section> 
 	<section>
 	<h3>Examples</h3>
    <pre><code>
