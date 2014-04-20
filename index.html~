@@ -560,7 +560,7 @@ take(5): All that just for 5 elements!
  <h3>Escape route :</h3>
   For Performance and/or efficiency , go the procedural route
   <pre><code>
-  var results = [];
+var results = [];
 for (var i = 0; i < array.length; ++i) {
   var value = (array[i] * array[i]) + 1;
   if (value % 2 === 0) {
