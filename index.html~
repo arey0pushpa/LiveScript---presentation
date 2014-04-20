@@ -480,7 +480,7 @@ end
      <i> Core of Lazy.js is function composition <br /></i>
    Array transformation :
    <pre><code>
-   f ( [x , y , ...] ) → f [ x', y', ...]
+   f ( [x , y , ...] ) → [ x', y', ...]
    </code></pre>  
 
    </section>
@@ -489,8 +489,8 @@ end
    <h3><a href="http://www.haskell.org/haskellwiki/MapReduce_as_a_monad"> Map</a></h3>
    map from Underscore:   
    <pre><code>
-    var array1 = [1, 2, 3, 4, 5]; 
-    var array2 = _.map(array1, function(x) { return x + array1.length; });    
+  var array1 = [1, 2, 3, 4, 5]; 
+  var array2 = _.map(array1, function(x) { return x + array1.length; });    
    </code></pre>
    map from Lazy.js
    <pre><code>
@@ -578,11 +578,12 @@ for (var i = 0; i < array.length; ++i) {
  <h3>Lazyjs time !</h3>
  <pre><code>
 var result = Lazy(array).map(square).map(inc).filter(isEven).take(5); 
-
  </code></pre>
  No iteration takes place until you call each, and no intermediate arrays are created. 
 
 </section> 
+
+<!--
 	<section>
 	<h3>Examples</h3>
    <pre><code>
@@ -608,7 +609,7 @@ var result = Lazy(array).map(square).map(inc).filter(isEven).take(5);
     });   
    </code></pre>
 	</section>
-	
+	-->
 				
 				<section>
 					<h2>That's all folks !</h2>
